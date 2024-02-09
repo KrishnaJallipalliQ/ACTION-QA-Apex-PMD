@@ -1,0 +1,17 @@
+name: Code Analysis
+description: Run code analysis using sonarqube
+
+inputs:
+  code-analysis-token:
+    description: Code analysis token
+
+  code-analysis-host-url:
+    description: Code analysis host url
+
+runs:
+  using: "composite"
+  steps:
+    - uses: sonarsource/sonarqube-scan-action@v2
+      env:
+        SONAR_TOKEN: ${{ inputs.code-analysis-token }}
+        SONAR_HOST_URL: ${{ inputs.code-analysis-host-url }}
