@@ -15,10 +15,14 @@ jobs:
         - uses: actions/checkout@v4
           with:
             ref: main
-            repository: KrishnaJallipalliQ/dummy-C-/apex-recipes-main/force-app/main/default/classes
+            repository: KrishnaJallipalliQ/dummy-C-
             token: ${{ secrets.SERVICE_ACCOUNT_MERGE_TOKEN }}
             fetch-depth: 0
+            path: /apex-recipes-main/force-app/main/default/classes/
         - uses: KrishnaJallipalliQ/ACTION-QA-Apex-PMD@main
+          with:
+            code-analysis-path: ${{ secrets.DIR_MAIN_PATH }}
+            code-analysis-host-url: ${{ secrets.SONAR_HOST_URL }}
 
         - name: Upload PMD xml Report
           uses: actions/upload-artifact@v2
