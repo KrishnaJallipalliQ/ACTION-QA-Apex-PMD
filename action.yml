@@ -11,3 +11,4 @@ runs:
     - uses: legetz/setup-pmd@7.0.0-rc3
       env:
         PMD_TOKEN: ${{ inputs.code-analysis-path }}
+        
