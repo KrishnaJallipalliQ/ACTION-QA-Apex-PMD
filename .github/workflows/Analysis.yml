@@ -1,17 +1,30 @@
-name: Code Analysis
-description: Run code analysis using sonarqube
+name: Run Code Analysis
 
-inputs:
-  code-analysis-token:
-    description: Code analysis token
+on:
+    workflow_dispatch:
+    pull_request:
+      types: [opened, synchronize, reopened]
+    push:
+      branches:
+        - 'main'
+      paths-ignore:
+        - 'README.md'
+        - '.github/workflows/**'
 
-  code-analysis-host-url:
-    description: Code analysis host url
+jobs:
+    code-analysis:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+          with:
+            ref: master
+            repository: KrishnaJallipalliQ/dummy-C-/apex-recipes-main/force-app/main/default/classes
+            token: ${{ secrets.SERVICE_ACCOUNT_MERGE_TOKEN }}
+            fetch-depth: 0
+        - uses: KrishnaJallipalliQ/ACTION-DEVOPS-Code-Analysis@main
 
-runs:
-  using: "composite"
-  steps:
-    - uses: sonarsource/sonarqube-scan-action@v2
-      env:
-        SONAR_TOKEN: ${{ inputs.code-analysis-token }}
-        SONAR_HOST_URL: ${{ inputs.code-analysis-host-url }}
+        - name: Upload PMD xml Report
+          uses: actions/upload-artifact@v2
+          with:
+            name: pmd-report
+            path: /home/runner/work/dummy-C-/pmd-report.xml --rulesets ./pmd-rules.xml -f xml -r /home/runner/work/dummy-C-/pmd-report.xml || true
