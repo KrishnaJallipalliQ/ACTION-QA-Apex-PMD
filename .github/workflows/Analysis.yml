@@ -18,7 +18,7 @@ jobs:
             repository: KrishnaJallipalliQ/dummy-C-/apex-recipes-main/force-app/main/default/classes
             token: ${{ secrets.SERVICE_ACCOUNT_MERGE_TOKEN }}
             fetch-depth: 0
-        - uses: KrishnaJallipalliQ/ACTION-DEVOPS-Code-Analysis@main
+        - uses: KrishnaJallipalliQ/ACTION-QA-Apex-PMD@main
 
         - name: Upload PMD xml Report
           uses: actions/upload-artifact@v2
