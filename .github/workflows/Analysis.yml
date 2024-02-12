@@ -18,7 +18,7 @@ jobs:
             repository: KrishnaJallipalliQ/dummy-C-
             token: ${{ secrets.GITHUB_TOKEN }}
             fetch-depth: 0
-            path: /home/runner/work/dummy-C-/dummy-C-/apex-recipes-main/force-app/main/default/classes/
+            path: /home/runner/work/ACTION-QA-Apex-PMD/ACTION-QA-Apex-PMD/apex-recipes-main/force-app/main/default/classes
         - uses: KrishnaJallipalliQ/ACTION-QA-Apex-PMD@main
           with:
             code-analysis-path: ${{ secrets.DIR_MAIN_PATH }}
