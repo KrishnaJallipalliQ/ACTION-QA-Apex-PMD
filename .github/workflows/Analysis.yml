@@ -18,7 +18,6 @@ jobs:
             repository: KrishnaJallipalliQ/dummy-C-
             token: ${{ secrets.SERVICE_ACCOUNT_MERGE_TOKEN }}
             fetch-depth: 0
-            path: /apex-recipes-main/force-app/main/default/classes/
         - uses: KrishnaJallipalliQ/ACTION-QA-Apex-PMD@main
           with:
             code-analysis-path: ${{ secrets.DIR_MAIN_PATH }}
