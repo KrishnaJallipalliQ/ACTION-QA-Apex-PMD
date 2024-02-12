@@ -1,0 +1,15 @@
+name: Code Analysis
+description: Run code analysis using PMD
+
+inputs:
+  code-analysis-directory:
+    description: Code analysis directory
+
+
+runs:
+  using: "composite"
+  steps:
+    - uses: legetz/setup-pmd@7.0.0-rc3
+      env:
+        PMD_TOKEN: ${{ inputs.code-analysis-directory }}
+      
