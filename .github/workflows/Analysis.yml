@@ -16,8 +16,9 @@ jobs:
           with:
             ref: main
             repository: KrishnaJallipalliQ/dummy-C-
-            token: ${{ secrets.SERVICE_ACCOUNT_MERGE_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
             fetch-depth: 0
+            path: /home/runner/work/dummy-C-/dummy-C-/apex-recipes-main/force-app/main/default/classes/
         - uses: KrishnaJallipalliQ/ACTION-QA-Apex-PMD@main
           with:
             code-analysis-path: ${{ secrets.DIR_MAIN_PATH }}
