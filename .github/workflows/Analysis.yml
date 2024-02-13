@@ -21,8 +21,7 @@ jobs:
             path: /home/runner/work/ACTION-QA-Apex-PMD/ACTION-QA-Apex-PMD/apex-recipes-main/force-app/main/default/classes
         - uses: KrishnaJallipalliQ/ACTION-QA-Apex-PMD@main
           with:
-            code-analysis-path: ${{ secrets.DIR_MAIN_PATH }}
-            code-analysis-host-url: ${{ secrets.SONAR_HOST_URL }}
+            code-analysis-directory: ${{ secrets.DIR_MAIN_PATH }}
 
         - name: Upload PMD xml Report
           uses: actions/upload-artifact@v2
