@@ -25,17 +25,17 @@ runs:
           format: "${{ inputs.results-format }}"
 
     - name: Upload SARIF report
-        uses: actions/upload-artifact@v2
-        with:
-          name: pmd-sarif-report
-          path: /home/runner/work/ACTION-QA-Apex-PMD/pmd-report.sarif
+      uses: actions/upload-artifact@v2
+      with:
+        name: pmd-sarif-report
+        path: /home/runner/work/ACTION-QA-Apex-PMD/pmd-report.sarif
 
-      - name: View SARIF report
-        uses: github/codeql-action/sarif-to-standalone-checks@v1
+    - name: View SARIF report
+      uses: github/codeql-action/sarif-to-standalone-checks@v1
 
-      - name: Upload HTML report
-        uses: actions/upload-artifact@v2
-        with:
-          name: pmd-html-report
-          path: /home/runner/work/ACTION-QA-Apex-PMD/pmd-html-report
+    - name: Upload HTML report
+      uses: actions/upload-artifact@v2
+      with:
+        name: pmd-html-report
+        path: /home/runner/work/ACTION-QA-Apex-PMD/pmd-html-report
         
