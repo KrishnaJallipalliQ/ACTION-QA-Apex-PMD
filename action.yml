@@ -8,6 +8,8 @@ inputs:
     description: Code analysis token
   rulesets-path:
     description: Rulesets path
+  results-format:
+    description: Results format
 runs:
   using: "composite"
   steps:
@@ -20,4 +22,5 @@ runs:
           token: "${{ inputs.code-analysis-token }}"
           rulesets: "${{ inputs.rulesets-path }}"
           analyzeModifiedFilesOnly: "flase"
+          format: "${{ inputs.results-format }}"
         
