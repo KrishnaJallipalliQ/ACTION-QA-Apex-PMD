@@ -4,11 +4,21 @@ description: Run code analysis using PMD
 inputs:
   code-analysis-directory:
     description: Code analysis directory
-
+  code-analysis-token:
+    description: Code analysis token
+  rulesets-path:
+    description: Rulesets path
 runs:
   using: "composite"
   steps:
-    - uses: legetz/setup-pmd@7.0.0-rc3
-      env:
-        PMD_TOKEN: ${{ inputs.code-analysis-directory }}
 
+    - uses: pmd/pmd-github-action@v2
+      id: pmd
+      with:
+          version: '6.55.0'
+          sourcePath: "${{ inputs.code-analysis-directory }}"
+          token: "${{ inputs.code-analysis-token }}"
+          rulesets: "${{ inputs.rulesets-path }}"
+          analyzeModifiedFilesOnly: "flase"
+        
+          
