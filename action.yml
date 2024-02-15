@@ -28,7 +28,7 @@ runs:
       uses: actions/upload-artifact@v2
       with:
         name: pmd-sarif-report
-        path: /home/runner/work/ACTION-QA-Apex-PMD/pmd-report.sarif
+        path: /home/runner/work/Apex-PMD/pmd-report.sarif
 
     - name: View SARIF report
       uses: github/codeql-action/upload-sarif@v2
@@ -37,5 +37,5 @@ runs:
       uses: actions/upload-artifact@v2
       with:
         name: pmd-html-report
-        path: /home/runner/work/ACTION-QA-Apex-PMD/pmd-html-report
+        path: /home/runner/work/Apex-PMD/pmd-html-report
         
