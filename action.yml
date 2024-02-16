@@ -18,7 +18,7 @@ runs:
       id: pmd
       with:
           version: '6.55.0'
-          sourcePath: "${{ inputs.code-analysis-directory }}"
+          sourcePath: ${{ inputs.code-analysis-directory }} "--rulesets ${{ secrets.PATH_RULES }} -f html -r /home/runner/work/ACTION-QA-Apex-PMD/pmd-report.html" 
           token: "${{ inputs.code-analysis-token }}"
           rulesets: "${{ inputs.rulesets-path }}"
           analyzeModifiedFilesOnly: "flase"
