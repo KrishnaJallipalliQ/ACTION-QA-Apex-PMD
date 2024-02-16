@@ -28,6 +28,6 @@ runs:
       uses: actions/upload-artifact@v2
       with:
           name: pmd-html-report
-          path: "${{ secrets.SOURCE_DIR }}/pmd-report.html"
+          path: "/home/runner/work/ACTION-QA-Apex-PMD/pmd-report.html"
 
         
