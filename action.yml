@@ -22,6 +22,12 @@ runs:
           token: "${{ inputs.code-analysis-token }}"
           rulesets: "${{ inputs.rulesets-path }}"
           analyzeModifiedFilesOnly: "flase"
-          format: "${{ inputs.results-format }}"
+          createGitHubAnnotations: "true"
+          
+    - name: Upload PMD HTML Report
+      uses: actions/upload-artifact@v2
+      with:
+          name: pmd-html-report
+          path: "${{ secrets.SOURCE_DIR }}/pmd-report.html"
 
         
