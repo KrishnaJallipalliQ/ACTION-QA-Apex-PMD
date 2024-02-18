@@ -24,19 +24,6 @@ runs:
           analyzeModifiedFilesOnly: "flase"
           createGitHubAnnotations: "true"
           
-      - name: Generate HTML Report
-        run: |
-          "${{ github.workspace }}/pmd-bin-${{ steps.pmd.outputs.version }}/bin/run.sh" pmd \
-            -f html \
-            -r reports/pmd-analysis-report.html \
-            -d "${{ secrets.SOURCE_DIR }}" \
-            -R "${{ secrets.PATH_RULES }}" \
-            -no-cache
-          
-      - name: Upload PMD HTML Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: pmd-html-report
-          path: reports
+
 
         
