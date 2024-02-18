@@ -24,10 +24,20 @@ runs:
           analyzeModifiedFilesOnly: "flase"
           createGitHubAnnotations: "true"
           
-    - name: Upload PMD HTML Report
-      uses: actions/upload-artifact@v2
-      with:
+      - name: Generate HTML Report
+        run: |
+          "${{ github.workspace }}/pmd-bin-${{ steps.pmd.outputs.version }}/bin/run.sh" pmd \
+            -f html \
+            -r reports/pmd-analysis-report.html \
+            -d "${{ secrets.SOURCE_DIR }}" \
+            -R "${{ secrets.PATH_RULES }}" \
+            -no-cache \
+            -sarif-file "${{ github.workspace }}/pmd-report.sarif"
+          
+      - name: Upload PMD HTML Report
+        uses: actions/upload-artifact@v2
+        with:
           name: pmd-html-report
-          path: "/home/runner/work/ACTION-QA-Apex-PMD/pmd-report.html"
+          path: reports
 
         
