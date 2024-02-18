@@ -31,8 +31,7 @@ runs:
             -r reports/pmd-analysis-report.html \
             -d "${{ secrets.SOURCE_DIR }}" \
             -R "${{ secrets.PATH_RULES }}" \
-            -no-cache \
-            -sarif-file "${{ github.workspace }}/pmd-report.sarif"
+            -no-cache
           
       - name: Upload PMD HTML Report
         uses: actions/upload-artifact@v2
