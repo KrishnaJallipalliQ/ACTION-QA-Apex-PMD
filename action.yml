@@ -28,7 +28,7 @@ runs:
       uses: legetz/setup-pmd@7.0.0-rc4
     - name: APEX full scan
       shell: bash
-      run: pmd check --dir ${{ inputs.code-analysis-directory }} --rulesets ${{ inputs.rulesets-path }} --uploadSarifReport false -f html -r ${{ inputs.results-format }}
+      run: pmd check --dir ${{ inputs.code-analysis-directory }} --rulesets ${{ inputs.rulesets-path }} -f html -r ${{ inputs.results-format }} || true
 
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
