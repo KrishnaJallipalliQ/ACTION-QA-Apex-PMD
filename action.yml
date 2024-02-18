@@ -24,6 +24,21 @@ runs:
           analyzeModifiedFilesOnly: "flase"
           createGitHubAnnotations: "true"
           
+    - name: Setup PMD
+      uses: legetz/setup-pmd@7.0.0-rc4
+    - name: APEX full scan
+      shell: bash
+      run: pmd check --dir ${{ inputs.code-analysis-directory }} --rulesets ${{ inputs.rulesets-path }} --uploadSarifReport false -f html -r /home/runner/work/ACTION-QA-Apex-PMD/pmd-report.html || true
+      with:
+          analyzeModifiedFilesOnly: "flase"
+          format: "-f .html"
+          uploadSarifReport: "flase"
+
+    - name: Upload PMD Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: pmd-report
+        path: /home/runner/work/ACTION-QA-Apex-PMD/pmd-report.html      
 
 
         
