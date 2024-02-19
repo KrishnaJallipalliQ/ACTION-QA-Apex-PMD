@@ -19,7 +19,7 @@ runs:
       with:
           version: '6.55.0'
           sourcePath: "${{ inputs.code-analysis-directory }}"
-          token: "${{ inputs.code-analysis-token }}"
+        
           rulesets: "${{ inputs.rulesets-path }}"
           analyzeModifiedFilesOnly: "flase"
           createGitHubAnnotations: "true"
@@ -28,7 +28,7 @@ runs:
       uses: legetz/setup-pmd@7.0.0-rc4
     - name: APEX full scan
       shell: bash
-      run: "pmd check --dir ${{ inputs.code-analysis-directory }} --rulesets ${{ inputs.rulesets-path }} -f html -r ${ inputs.results-format }} || true
+      run: pmd check --dir ${{ inputs.code-analysis-directory }} --rulesets ${{ inputs.rulesets-path }} -f html -r ${{ inputs.results-format }} || true
 
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
